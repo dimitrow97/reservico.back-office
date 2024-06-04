@@ -1,3 +1,4 @@
+import Error from "@/components/common/error"
 import CategoriesDataTable from "../components/categories/categories-data-table"
 import Loader from "../components/common/loader"
 import { useGetCategoriesQuery } from "../features/categories/categories-api-slice"
@@ -33,7 +34,7 @@ const Categories = () => {
             </Card>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

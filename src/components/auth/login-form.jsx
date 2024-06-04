@@ -54,7 +54,7 @@ const LoginForm = () => {
       const userData = await token({ authorizationCode: auth.authorizationCode }).unwrap()
 
       dispatch(setCredentials({ ...userData, email }))
-      navigate('/home')
+      navigate('/')
     } catch (err) {
       if (!err?.originalStatus) {
         // isLoading: true until timeout occurs

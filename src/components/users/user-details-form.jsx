@@ -1,4 +1,5 @@
 import { useGetUserQuery } from "../../features/users/users-api-slice"
+import Error from "../common/error";
 import Loader from "../common/loader";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -70,7 +71,7 @@ const UserDetailsForm = (props) => {
             </div>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

@@ -4,6 +4,7 @@ import { Label } from "../ui/label";
 import ClientEditDialog from "./client-edit-dialog";
 import ClientDeleteAlertDialog from "./client-delete-alert-dialog"
 import Loader from "../common/loader";
+import Error from "../common/error";
 
 const ClientDetailsForm = (props) => {
     const {
@@ -94,7 +95,7 @@ const ClientDetailsForm = (props) => {
             </div>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

@@ -2,6 +2,7 @@ import { useGetDashboardQuery } from "../features/dashboard/dashboard-api-slice"
 import Loader from "../components/common/loader"
 import DashboardCards from "../components/dashboard/dashboard-cards"
 import DashboardTable from "../components/dashboard/dashboard-table"
+import Error from "@/components/common/error"
 
 const Home = () => {
 
@@ -24,7 +25,7 @@ const Home = () => {
       </main>
     )
   } else if (isError) {
-    content = <p>{JSON.stringify(error)}</p>;
+    content = <Error />;
   }
 
   return content

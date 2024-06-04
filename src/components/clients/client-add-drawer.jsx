@@ -84,6 +84,14 @@ export function ClientAddDrawer() {
         } catch (err) {
             console.log(err);
         }
+
+        form.reset({
+            name: "",
+            address: "",
+            city: "",
+            postcode: "",
+            country: ""
+        })
     };
 
     return (

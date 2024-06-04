@@ -2,6 +2,7 @@ import { useGetReservationDetailsQuery } from "../../features/reservations/reser
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import Loader from "../common/loader";
+import Error from "../common/error";
 
 const ClientDetailsForm = (props) => {
     const {
@@ -143,7 +144,7 @@ const ClientDetailsForm = (props) => {
             </div>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

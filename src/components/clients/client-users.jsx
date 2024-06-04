@@ -1,6 +1,7 @@
 import ClientUsersDataTable from "./client-users-data-table";
 import { useGetUsersForClientQuery } from "../../features/users/users-api-slice"
 import Loader from "../common/loader";
+import Error from "../common/error";
 
 const ClientUsers = (props) => {
     const {
@@ -20,7 +21,7 @@ const ClientUsers = (props) => {
             <ClientUsersDataTable data={users.data} />
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

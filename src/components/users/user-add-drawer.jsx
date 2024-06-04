@@ -40,6 +40,7 @@ import { UserAddSchema } from "../../schema";
 import { apiSlice } from "../../app/api/api-slice"
 import { useDispatch } from "react-redux"
 import Loader from "../common/loader"
+import Error from "../common/error"
 
 export function UserAddDrawer() {
     const {
@@ -102,6 +103,14 @@ export function UserAddDrawer() {
         } catch (err) {
             console.log(err);
         }
+
+        form.reset({
+            email: "",
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            clientId: "",
+        })
     };
 
     let content;
@@ -229,7 +238,7 @@ export function UserAddDrawer() {
             </Drawer>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content

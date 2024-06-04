@@ -76,6 +76,10 @@ export function CategoryAddDrawer() {
         } catch (err) {
             console.log(err);
         }
+
+        form.reset({
+            name: ""
+        })
     };
 
     return (

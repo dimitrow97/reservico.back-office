@@ -1,3 +1,4 @@
+import Error from "@/components/common/error"
 import ClientsDataTable from "../components/clients/clients-data-table"
 import Loader from "../components/common/loader"
 import { useGetClientsQuery } from "../features/clients/clients-api-slice"
@@ -33,7 +34,7 @@ const Clients = () => {
             </Card>
         )
     } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
+        content = <Error />;
     }
 
     return content
