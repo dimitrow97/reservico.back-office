@@ -12,11 +12,15 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useState } from 'react'
 import { useChangePasswordMutation } from "../../features/users/users-api-slice"
+import { logOut } from "@/features/auth/auth-slice"
+import { useDispatch } from "react-redux"
 
 const AccountProfileChangePassword = () => {
     const { toast } = useToast()
-    const [pwd, setPwd] = useState("")    
+    const [pwd, setPwd] = useState("")
     const [newPwd, setNewPwd] = useState("")
+    
+    const dispatch = useDispatch()
 
     const handlePwdInput = (e) => setPwd(e.target.value)
     const handleNewPwdInput = (e) => setNewPwd(e.target.value)
@@ -34,20 +38,17 @@ const AccountProfileChangePassword = () => {
         try {
             const response = await changePassword(changePwdRequestModel).unwrap()
 
-            if (response.isSuccess) {
-                toast({
-                    title: "Password changed!",
-                    description: "You have successfully changed your password!",
-                })
-            }
-            else {
-                toast({
-                    title: "Changing your password was unsuccessfull!",
-                    description: response.errorMessage,
-                })
-            }
+            toast({
+                title: "Password changed!",
+                description: "You have successfully changed your password!",
+            })
+
+            dispatch(logOut())
+
         } catch (err) {
-            console.log(err);
+            toast({
+                title: "Changing your password was unsuccessfull!",
+            })
         }
     };
 
